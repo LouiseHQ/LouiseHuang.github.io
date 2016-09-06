@@ -1,44 +1,7 @@
-<!--Login Page-->
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-.greeting{
-	color: white;
-	text-align: center;
-	font-size: 40px;
-	width: 100%;
-	position:absolute;
-	top:20%;
-}
-</style>
-
-<script>
-function myFunction() {
-    var x,y, text;
-
-    // Get the value of the input field with id="numb"
-    x = document.getElementById("username").value;
-    y = document.getElementById("password").value;
-    // If x is Not a Number or less than one or greater than 10
-    if (x=="louiseh"&&y=="1234") {
-        text = "You are now logged in.";
-    } else {
-        text = "Wrong Info";
-    }
-    document.getElementById("info").innerHTML = text;
-}
-</script>
-
-</head>
-
-<body background="./images/background/red_mountain.jpg">
-	<div class="greeting">
-		<h1> Hello World!</h1>
-		<input id="username"></br>
-		<input id="password"></br>
-		<button type="button" onclick="myFunction()">Log In</button>
-		<p id = "info"></p>
-	</div>
+<body>
+<h1>Hello World</h1>
+<p>I'm hosted with GitHub Pages.</p>
 </body>
 </html>
