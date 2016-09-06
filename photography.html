@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Photography</title>
+	<meta charset="utf-8">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/javascript/slider.js"></script>
+	<script src="js/three/build/three.min.js"></script>
+	<script src="js/three/build/three.js"></script>
+	<script src="js/javascript/THREEx.WindowResize.js"></script>
+
+	<style>
+		body{
+			background-color:#ffffff;
+		}
+
+		.title {
+			position:relative;
+			float:right;
+			width:900px;
+			height:120px;
+			margin:30px 50px 0 0;
+		}
+
+		.slider_container{
+			overflow: hidden;
+			position:relative;
+			margin:20px 40px 0px 70px;
+			padding-top:13px;
+			padding-bottom: 13px;
+			float:left;
+			height: 720px;
+			width: 220px;
+		}
+
+		#image_slider{
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			float: top;
+			padding:0px;
+			margin:0px;
+		}
+
+		#image_slider div{
+			position:relative;
+			margin:20px;
+			height:180px;
+			width:180px;
+			float: top;
+		}
+
+		.slider p{
+			padding:0;
+			margin:0;
+			position:relative;
+			text-align: center;
+			top:50%;
+		}
+
+		.nvgt_slider{
+			position:absolute;
+			height: 30px;
+			width: 220px;
+		}
+		.nvgt_gallery{
+			position:absolute;
+			height: 40px;
+			width: 40px;
+			opacity: 0.6;
+			left:50%;
+		}
+		.nvgt_slider:hover{
+			opacity: 0.8;
+		}
+		#prev{
+			background: #000 url('images/photography/nvgt_up.gif') no-repeat center;
+			top: 0px;
+		}
+		#next{
+			background: #000 url('images/photography/nvgt_down.gif') no-repeat center;
+			bottom: 0px;
+		}
+		#prev_g{
+			background: #000 url('images/photography/nvgt_up.gif') no-repeat center;
+			top: 0px;
+		}
+		#next_g{
+			background: #000 url('images/photography/nvgt_down.gif') no-repeat center;
+			bottom: 0px;
+		}
+
+		.gallery_container{
+			overflow: hidden;
+			position:relative;
+			margin:10px 100px 10px 30px;
+			float:right;
+			width: 900px;
+			height: 600px;
+		}
+		.gallery{
+			position:relative;
+			width: 900px;
+			height: 600px;
+		}
+
+		.gallery img{
+			display:block;
+			margin:0 auto;
+		}
+
+		#gallery_bw, #gallery_archi, #gallery_land, #gallery_city, #gallery_unfiled{
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			float: top;
+		}
+
+		#slider_bw{
+			background: url('images/photography/bw.gif') no-repeat center;
+			background-size: auto 90%;
+		}
+		#slider_land{
+			background: url('images/photography/land.gif') no-repeat center;
+			background-size: auto 90%;
+		}
+		#slider_archi{
+			background: url('images/photography/archi.gif') no-repeat center;
+			background-size: auto 90%;
+		}
+		#slider_city{
+			background: url('images/photography/city.gif') no-repeat center;
+			background-size: auto 90%;
+		}
+		#slider_unfiled{
+			background: url('images/photography/unfiled.gif') no-repeat center;
+			background-size: auto 90%;
+		}
+		canvas {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index:-9999;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		var current="#front";
+		$(document).ready(function(){
+			$("#slider_bw").click(function(){
+				if (current){
+					$(current).hide();
+				}
+				current = "#gallery_bw";
+				$("#gallery_bw").show();
+				$("#prev_g").show();
+				$("#next_g").show();
+				id = "gallery_bw";
+				p = "prev_g";
+				n = "next_g";
+				slider_g = new slider(id,p,n);
+				slider_init(slider_g);
+			});
+			$("#slider_archi").click(function(){
+				if (current){
+					$(current).hide();
+				}
+				current = "#gallery_archi";
+				$("#gallery_archi").show();
+				$("#prev_g").show();
+				$("#next_g").show();
+				id = "gallery_archi";
+				p = "prev_g";
+				n = "next_g";
+				slider_g = new slider(id,p,n);
+				slider_init(slider_g);
+			});
+			$("#slider_land").click(function(){
+				if (current){
+					$(current).hide();
+				}
+				current = "#gallery_land";
+				$("#gallery_land").show();
+				$("#prev_g").show();
+				$("#next_g").show();
+				id = "gallery_land";
+				p = "prev_g";
+				n = "next_g";
+				slider_g = new slider(id,p,n);
+				slider_init(slider_g);
+			});
+			$("#slider_city").click(function(){
+				if (current){
+					$(current).hide();
+				}
+				current = "#gallery_city";
+				$("#gallery_city").show();
+				$("#prev_g").show();
+				$("#next_g").show();
+				id = "gallery_city";
+				p = "prev_g";
+				n = "next_g";
+				slider_g = new slider(id,p,n);
+				slider_init(slider_g);
+			});
+			$("#slider_unfiled").click(function(){
+				if (current){
+					$(current).hide();
+				}
+				current = "#gallery_unfiled";
+				$("#gallery_unfiled").show();
+				$("#prev_g").show();
+				$("#next_g").show();
+				id = "gallery_unfiled";
+				p = "prev_g";
+				n = "next_g";
+				slider_g = new slider(id,p,n);
+				slider_init(slider_g);
+			});
+		});
+	</script>
+
+	<canvas></canvas>
+	<script type="text/javascript" src="js/javascript/bg.js"></script>
+	<div>
+		<div class="title">
+			<img style="width: 100%; opacity:0.95" src="images/photography/PHOTOGRAPHY_lean.png"/>
+		</div>	
+
+		<div class="slider_container">
+			<div id="image_slider">
+				<div class="slider" id="slider_bw"><p>Black&amp;White</p></div>
+				<div class="slider" id="slider_land"><p>Landscape</p></div>
+				<div class="slider" id="slider_archi"><p>Architecture</p></div>
+				<div class="slider" id="slider_city"><p>City&amp;Life</p></div>
+				<div class="slider" id="slider_unfiled"><p>Unfiled</p></div>
+			</div>
+			<span class="nvgt_slider" id="prev"></span>
+			<span class="nvgt_slider" id="next"></span>
+		</div>
+
+		<div class="gallery_container">
+			<img id="front" style="width: 100%;"src="images/photography/front.jpg"/>
+			<div id="gallery_bw" style="display: none;">
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/1.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/2.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/3.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/4.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/5.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/6.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/bw/7.jpg"/>
+				</div>
+			</div>
+
+			<div id="gallery_land" style="display: none;">
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/landscape/1.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/2.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/3.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/4.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/5.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/6.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/7.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/8.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/9.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/10.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/landscape/11.jpg"/>
+				</div>
+			</div>
+
+			<div id="gallery_archi" style="display: none;">
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/architecture/1.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/architecture/2.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/architecture/3.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/architecture/4.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/architecture/5.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/architecture/6.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%; display:block; margin:0 auto;" src="images/photography/architecture/7.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;display:block; margin:0 auto;"src="images/photography/architecture/8.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;display:block; margin:0 auto;"src="images/photography/architecture/9.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/architecture/10.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/architecture/11.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="height:100%;"src="images/photography/architecture/12.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width:100%;"src="images/photography/architecture/13.jpg"/>
+				</div>
+			</div>
+
+			<div id="gallery_city" style="display: none;">
+				<div class = "gallery">
+					<img style="height: 100%;"src="images/photography/city/1.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/2.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/4.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/5.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/6.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/7.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/8.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/9.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/city/10.jpg"/>
+				</div>
+			</div>
+
+			<div id="gallery_unfiled" style="display: none;">
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/1.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/2.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/3.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/4.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/5.jpg"/>
+				</div>
+				<div class = "gallery">
+					<img style="width: 100%;"src="images/photography/unfiled/6.jpg"/>
+				</div>
+			</div>
+
+			<span class="nvgt_gallery" style="display: none;" id="prev_g"></span>
+			<span class="nvgt_gallery" style="display: none;" id="next_g"></span>
+		</div>
+
+	</div>
+	
+</body>
+
+</html>
