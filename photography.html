@@ -149,6 +149,13 @@
 
 <body>
 	<script>
+		$(document).ready(function(){
+		id = "image_slider";
+		p = "prev";
+		n = "next";
+		slider_s = new slider(id,p,n);
+		slider_init(slider_s);
+		});
 		var current="#front";
 		$(document).ready(function(){
 			$("#slider_bw").click(function(){

@@ -80,13 +80,6 @@ function onClickNext(slider){
 	}		
 }
 
-$(document).ready(function(){
-		id = "image_slider";
-		p = "prev";
-		n = "next";
-		slider_s = new slider(id,p,n);
-		slider_init(slider_s);
-});
 
 
 

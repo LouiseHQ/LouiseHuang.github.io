@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Paintings and Sketchings</title>
+	<meta charset="utf-8">
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/javascript/slider.js"></script>
+	<script src="js/three/build/three.min.js"></script>
+	<script src="js/three/build/three.js"></script>
+	<script src="js/javascript/THREEx.WindowResize.js"></script>
+	<script>
+			$(document).ready(function(){
+			id = "paint";
+			p = "prev_p";
+			n = "next_p";
+			slider_p = new slider(id,p,n);
+			slider_init(slider_p);
+		});
+	</script>
+
+	<style>
+		body{
+			background-color:#ffffff;
+		}
+
+		.title {
+			position:relative;
+			left:50%;
+			width:1200px;
+			height:150px;
+			margin:10px 0px 0 -600px;
+		}
+
+		.nvgt_paint{
+			position:absolute;
+			height: 40px;
+			width: 40px;
+			opacity: 0.6;
+			left:50%;
+		}
+
+		#prev_p{
+			background: #000 url('images/photography/nvgt_up.gif') no-repeat center;
+			top: 0px;
+		}
+		#next_p{
+			background: #000 url('images/photography/nvgt_down.gif') no-repeat center;
+			bottom: 0px;
+		}
+
+		.painting_container{
+			overflow: hidden;
+			position:relative;
+			margin:10px 10px 10px -500px;
+			left:50%;
+			width: 1000px;
+			height: 600px;
+		}
+
+		.painting{
+			position:relative;
+			width:1000px;
+			height:600px;
+		}
+
+		.painting img{
+			display:block;
+			margin:0 auto;
+		}
+
+		#paint{
+			position: relative;
+			height: auto;
+			overflow: hidden;
+			float: top;
+		}
+		canvas {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index:-9999;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas></canvas>
+	<script type="text/javascript" src="js/javascript/bg.js"></script>
+	<div class="title">
+		<img style="width: 100%; opacity:0.95" src="images/paint/PAINT.png"/>
+	</div>	
+
+	<div class="painting_container">
+		<div id="paint">
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/1.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/2.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/3.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/4.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/5.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/6.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/7.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/8.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/9.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/10.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/11.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/12.jpg"/>
+			</div>
+			<div class = "painting">
+				<img style="height: 100%;"src="images/paint/13.jpg"/>
+			</div>
+		</div>
+		<span class="nvgt_paint" id="prev_p"></span>
+		<span class="nvgt_paint" id="next_p"></span>
+	</div>	
+</body>
+
+</html>
