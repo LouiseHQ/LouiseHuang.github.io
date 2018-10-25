@@ -10,13 +10,16 @@
 				background-color: #000000;
 				overflow: hidden;
 			}
-			.title {
-			position:relative;
-			left:50%;
-			width:800px;
-			height:200px;
-			margin:30px 0px 0px -400px;
+			.name{
+    			position:relative;
+          margin-top: 5%;
+          text-align: center;
 			}
+      n1 {
+        font-family: "Avenir Next";
+        font-weight:normal;
+        font-size:100px;
+      }
 			.menu{
 				position: absolute;
 				width:220px;
@@ -86,17 +89,7 @@
 		material = new THREE.MeshPhongMaterial({map:texture, transparent:true, opacity:0.8});
 		mesh = new THREE.Mesh(geometry,material);
 		mesh.position.y=-10;
-		scene.add(mesh);
-
-
-		/*photo =  new THREE.SphereGeometry(15,60,60);
-		photo_texture = THREE.ImageUtils.loadTexture("http://localhost:8000/images/photo.png");
-		photo_material = new THREE.MeshPhongMaterial({map:photo_texture, transparent:true, opacity:0.8});
-		photo_mesh = new THREE.Mesh(photo,photo_material);
-		photo_mesh.position.x= -100;
-		photo_mesh.position.z= -10;
-		photo_mesh.userData={href:"./photography.html"};
-		scene.add(photo_mesh);*/
+		// scene.add(mesh);
 
 
 
@@ -106,9 +99,9 @@
 		spotLight1 = new THREE.SpotLight( 0xffffff, 5);
 		spotLight1.position.set( 0, 5000, 0 );
 		spotLight1.angle = Math.PI;
-		
+
 		scene.add( spotLight1 );
-		
+
 
 		stargeometry = new THREE.SphereGeometry(400, 20, 20);
 		startexture = THREE.ImageUtils.loadTexture("./images/globe/star_medium.jpg" );
@@ -116,7 +109,7 @@
 			alert("texture not loaded!");
 		}
 		starmaterial = new THREE.MeshBasicMaterial({map:startexture});
-		
+
 		starmesh = new THREE.Mesh( stargeometry, starmaterial );
 		starmesh.material.side  = THREE.BackSide;
 
@@ -131,18 +124,17 @@
 	function render(){
 		starmesh.rotation.y += 0.0004;
 		mesh.rotation.y += 0.003;
-		//photo_mesh.rotation.y -=0.03;
 		renderer.render(scene, camera );
 	}
 
 	init();
 	animate();
-	
+
 	</script>
 
-	<div class="title">
-		<img style="width: 100%;" src="images/name.png"/>
-	</div>	
+	<div class="name">
+		<a> <n1> Louise Huang </n1></a>
+	</div>
 	<div class = "menu">
 		<a href="./photography.html" style="text-decoration:none">
 		<h1>Photography</h1>
